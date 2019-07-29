@@ -4,6 +4,8 @@ import club.lightingsummer.movie.cinema.api.po.AreaDict;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface AreaDictMapper {
@@ -18,4 +20,6 @@ public interface AreaDictMapper {
     int updateByPrimaryKeySelective(AreaDict record);
 
     int updateByPrimaryKey(AreaDict record);
+
+    List<AreaDict> selectAllAreas();
 }

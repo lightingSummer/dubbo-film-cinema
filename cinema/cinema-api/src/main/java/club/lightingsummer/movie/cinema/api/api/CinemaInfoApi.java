@@ -16,4 +16,6 @@ public interface CinemaInfoApi {
     CinemaInfoVO getCinemaInfoById(int cinemaId);
     // 获取影院品牌列表
     List<BrandVO> getBrands(int brandId);
+    // 获取影院区域列表
+    List<AreaVO> getAreas(int areaId);
 }

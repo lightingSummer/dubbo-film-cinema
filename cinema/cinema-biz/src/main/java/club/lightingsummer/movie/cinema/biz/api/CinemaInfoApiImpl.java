@@ -1,9 +1,11 @@
 package club.lightingsummer.movie.cinema.biz.api;
 
 import club.lightingsummer.movie.cinema.api.api.CinemaInfoApi;
+import club.lightingsummer.movie.cinema.api.po.AreaDict;
 import club.lightingsummer.movie.cinema.api.po.BrandDict;
 import club.lightingsummer.movie.cinema.api.po.Cinema;
 import club.lightingsummer.movie.cinema.api.vo.*;
+import club.lightingsummer.movie.cinema.dal.dao.AreaDictMapper;
 import club.lightingsummer.movie.cinema.dal.dao.BrandDictMapper;
 import club.lightingsummer.movie.cinema.dal.dao.CinemaMapper;
 import club.lightingsummer.movie.cinema.dal.dao.HallFilmInfoMapper;
@@ -31,6 +33,8 @@ public class CinemaInfoApiImpl implements CinemaInfoApi {
     private HallFilmInfoMapper hallFilmInfoMapper;
     @Autowired
     private BrandDictMapper brandDictMapper;
+    @Autowired
+    private AreaDictMapper areaDictMapper;
 
     /**
      * @author: lightingSummer
@@ -126,6 +130,46 @@ public class CinemaInfoApiImpl implements CinemaInfoApi {
             }
         } catch (Exception e) {
             logger.error("获取影院品牌失败" + e.getMessage());
+        }
+        return response;
+    }
+
+    /**
+     * @author: lightingSummer
+     * @date: 2019/7/29 0029
+     * @description: 获取影院区域列表
+     */
+    @Override
+    public List<AreaVO> getAreas(int areaId) {
+        List<AreaVO> response = new ArrayList<>();
+        try {
+            // 判断是否点亮全部按钮
+            boolean ifLightAllButton = false;
+            if (areaId == 99) {
+                ifLightAllButton = true;
+            } else {
+                AreaDict areaIfExits = areaDictMapper.selectByPrimaryKey(areaId);
+                if (areaIfExits == null) {
+                    ifLightAllButton = true;
+                }
+            }
+            // 遍历转化为VO
+            List<AreaDict> areaDicts = areaDictMapper.selectAllAreas();
+            for (AreaDict areaDict : areaDicts) {
+                AreaVO areaVO = new AreaVO();
+                areaVO.setAreaId(areaDict.getUuid() + "");
+                areaVO.setAreaName(areaDict.getShowName());
+                if (!ifLightAllButton) {
+                    if (areaDict.getUuid() == areaId) {
+                        areaVO.setActive(true);
+                    }
+                } else if (areaDict.getUuid() == 99) {
+                    areaVO.setActive(true);
+                }
+                response.add(areaVO);
+            }
+        } catch (Exception e) {
+            logger.error("查询影院区域列表失败" + e.getMessage());
         }
         return response;
     }

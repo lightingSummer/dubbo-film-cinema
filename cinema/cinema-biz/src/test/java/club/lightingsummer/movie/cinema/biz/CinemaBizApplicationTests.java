@@ -39,6 +39,12 @@ public class CinemaBizApplicationTests {
     }
 
     @Test
+    public void CinemaInfoApiAreaDictTest() {
+        System.out.println(cinemaInfoApi.getAreas(14));
+        System.out.println(cinemaInfoApi.getAreas(50));
+    }
+
+    @Test
     public void CinemaInfoApiTest() {
         CinemaQueryVO cinemaQueryVO = new CinemaQueryVO();
         cinemaQueryVO.setNowPage(1);

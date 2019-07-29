@@ -14,7 +14,12 @@
     from tb_area_dict
     where UUID = #{uuid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectAllAreas" resultType="club.lightingsummer.movie.cinema.api.po.AreaDict">
+      select
+      <include refid="Base_Column_List" />
+      from tb_area_dict
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tb_area_dict
     where UUID = #{uuid,jdbcType=INTEGER}
   </delete>
