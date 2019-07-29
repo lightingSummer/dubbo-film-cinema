@@ -22,4 +22,6 @@ public interface CinemaInfoApi {
     List<HallTypeVO> getHallTypes(int hallType);
     // 根据影院编号获取放映场次信息
     List<FilmInfoVO> getFilmInfoByCinemaId(int cinemaId);
+    // 根据放映场次id获取放映信息
+    HallInfoVO getFilmFieldInfo(int fieldId);
 }

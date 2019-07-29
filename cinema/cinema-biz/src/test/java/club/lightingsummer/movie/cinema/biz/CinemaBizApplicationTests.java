@@ -39,6 +39,11 @@ public class CinemaBizApplicationTests {
     }
 
     @Test
+    public void CinemaInfoApiFieldInfoTest() {
+        System.out.println(cinemaInfoApi.getFilmFieldInfo(1));
+    }
+
+    @Test
     public void CinemaInfoApiAreaDictTest() {
         System.out.println(cinemaInfoApi.getAreas(14));
         System.out.println(cinemaInfoApi.getAreas(50));
