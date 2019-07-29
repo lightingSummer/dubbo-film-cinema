@@ -4,11 +4,9 @@ import club.lightingsummer.movie.cinema.api.api.CinemaInfoApi;
 import club.lightingsummer.movie.cinema.api.po.AreaDict;
 import club.lightingsummer.movie.cinema.api.po.BrandDict;
 import club.lightingsummer.movie.cinema.api.po.Cinema;
+import club.lightingsummer.movie.cinema.api.po.HallDict;
 import club.lightingsummer.movie.cinema.api.vo.*;
-import club.lightingsummer.movie.cinema.dal.dao.AreaDictMapper;
-import club.lightingsummer.movie.cinema.dal.dao.BrandDictMapper;
-import club.lightingsummer.movie.cinema.dal.dao.CinemaMapper;
-import club.lightingsummer.movie.cinema.dal.dao.HallFilmInfoMapper;
+import club.lightingsummer.movie.cinema.dal.dao.*;
 import com.github.pagehelper.PageHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +33,8 @@ public class CinemaInfoApiImpl implements CinemaInfoApi {
     private BrandDictMapper brandDictMapper;
     @Autowired
     private AreaDictMapper areaDictMapper;
+    @Autowired
+    private HallDictMapper hallDictMapper;
 
     /**
      * @author: lightingSummer
@@ -170,6 +170,48 @@ public class CinemaInfoApiImpl implements CinemaInfoApi {
             }
         } catch (Exception e) {
             logger.error("查询影院区域列表失败" + e.getMessage());
+        }
+        return response;
+    }
+
+    /**
+     * @author: lightingSummer
+     * @date: 2019/7/29 0029
+     * @description: 获取影院类型列表
+     */
+    @Override
+    public List<HallTypeVO> getHallTypes(int hallType) {
+        List<HallTypeVO> response = new ArrayList<>();
+        try {
+            // 判断是否点亮全部按钮
+            boolean ifLightAllButton = false;
+            if (hallType == 99) {
+                ifLightAllButton = true;
+            } else {
+                HallDict hallIfExits = hallDictMapper.selectByPrimaryKey(hallType);
+                if (hallIfExits == null) {
+                    ifLightAllButton = true;
+                }
+            }
+            // 遍历转化为VO
+            List<HallDict> hallDicts = hallDictMapper.selectAllHalls();
+            for (HallDict hallDict : hallDicts) {
+                HallTypeVO hallTypeVO = new HallTypeVO();
+                hallTypeVO.setHalltypeId(hallDict.getUuid() + "");
+                hallTypeVO.setHalltypeName(hallDict.getShowName());
+                if (ifLightAllButton) {
+                    if (hallDict.getUuid() == 99) {
+                        hallTypeVO.setActive(true);
+                    }
+                } else {
+                    if (hallDict.getUuid() == hallType) {
+                        hallTypeVO.setActive(true);
+                    }
+                }
+                response.add(hallTypeVO);
+            }
+        } catch (Exception e) {
+            logger.error("获取影院类型列表" + e.getMessage());
         }
         return response;
     }

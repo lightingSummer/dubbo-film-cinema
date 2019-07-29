@@ -4,6 +4,8 @@ import club.lightingsummer.movie.cinema.api.po.HallDict;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface HallDictMapper {
@@ -18,4 +20,6 @@ public interface HallDictMapper {
     int updateByPrimaryKeySelective(HallDict record);
 
     int updateByPrimaryKey(HallDict record);
+
+    List<HallDict> selectAllHalls();
 }

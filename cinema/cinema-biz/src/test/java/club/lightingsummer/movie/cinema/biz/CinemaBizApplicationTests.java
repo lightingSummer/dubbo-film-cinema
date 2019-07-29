@@ -45,6 +45,12 @@ public class CinemaBizApplicationTests {
     }
 
     @Test
+    public void CinemaInfoApiHallDictTest() {
+        System.out.println(cinemaInfoApi.getHallTypes(13));
+        System.out.println(cinemaInfoApi.getHallTypes(14));
+    }
+
+    @Test
     public void CinemaInfoApiTest() {
         CinemaQueryVO cinemaQueryVO = new CinemaQueryVO();
         cinemaQueryVO.setNowPage(1);
