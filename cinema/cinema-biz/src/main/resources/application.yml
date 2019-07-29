@@ -9,10 +9,12 @@ spring:
     username: root
     password: "@qwe123456"
     driver-class-name: com.mysql.jdbc.Driver
+  application:
+    name: cinema-module
   dubbo:
     server: true
     registry: zookeeper://localhost:2181
     protocol:
       name: dubbo
-      port: 20882
+      port: 20883
 
