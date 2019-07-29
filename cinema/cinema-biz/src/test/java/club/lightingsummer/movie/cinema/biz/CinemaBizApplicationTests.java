@@ -45,6 +45,12 @@ public class CinemaBizApplicationTests {
     }
 
     @Test
+    public void CinemaInfoApiFieldTest() {
+        System.out.println(cinemaInfoApi.getFilmInfoByCinemaId(1));
+        System.out.println(cinemaInfoApi.getFilmInfoByCinemaId(3));
+    }
+
+    @Test
     public void CinemaInfoApiHallDictTest() {
         System.out.println(cinemaInfoApi.getHallTypes(13));
         System.out.println(cinemaInfoApi.getHallTypes(14));

@@ -20,7 +20,13 @@
     from tb_field
     where UUID = #{uuid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectFieldByCinemaIdAndFilmId" resultType="club.lightingsummer.movie.cinema.api.po.Field">
+      select
+      <include refid="Base_Column_List" />
+      from tb_field
+      where cinema_id = #{cinemaId} and film_id = #{filmId}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tb_field
     where UUID = #{uuid,jdbcType=INTEGER}
   </delete>

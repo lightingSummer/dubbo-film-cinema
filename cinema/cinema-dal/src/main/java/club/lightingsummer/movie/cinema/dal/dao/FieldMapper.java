@@ -2,7 +2,10 @@ package club.lightingsummer.movie.cinema.dal.dao;
 
 import club.lightingsummer.movie.cinema.api.po.Field;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Mapper
 @Repository
@@ -18,4 +21,7 @@ public interface FieldMapper {
     int updateByPrimaryKeySelective(Field record);
 
     int updateByPrimaryKey(Field record);
+
+    List<Field> selectFieldByCinemaIdAndFilmId(@Param("cinemaId") int cinemaId,
+                                               @Param("filmId") int filmId);
 }

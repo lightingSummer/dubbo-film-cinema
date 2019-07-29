@@ -1,10 +1,7 @@
 package club.lightingsummer.movie.cinema.biz.api;
 
 import club.lightingsummer.movie.cinema.api.api.CinemaInfoApi;
-import club.lightingsummer.movie.cinema.api.po.AreaDict;
-import club.lightingsummer.movie.cinema.api.po.BrandDict;
-import club.lightingsummer.movie.cinema.api.po.Cinema;
-import club.lightingsummer.movie.cinema.api.po.HallDict;
+import club.lightingsummer.movie.cinema.api.po.*;
 import club.lightingsummer.movie.cinema.api.vo.*;
 import club.lightingsummer.movie.cinema.dal.dao.*;
 import com.github.pagehelper.PageHelper;
@@ -35,6 +32,8 @@ public class CinemaInfoApiImpl implements CinemaInfoApi {
     private AreaDictMapper areaDictMapper;
     @Autowired
     private HallDictMapper hallDictMapper;
+    @Autowired
+    private FieldMapper fieldMapper;
 
     /**
      * @author: lightingSummer
@@ -212,6 +211,50 @@ public class CinemaInfoApiImpl implements CinemaInfoApi {
             }
         } catch (Exception e) {
             logger.error("获取影院类型列表" + e.getMessage());
+        }
+        return response;
+    }
+
+    /**
+     * @author: lightingSummer
+     * @date: 2019/7/29 0029
+     * @description: 根据影院编号获取放映场次信息
+     */
+    @Override
+    public List<FilmInfoVO> getFilmInfoByCinemaId(int cinemaId) {
+        List<FilmInfoVO> response = new ArrayList<>();
+        try {
+            // 获取当日放映电影信息
+            List<HallFilmInfo> hallFilmInfos = hallFilmInfoMapper.selectHallFilmInfoByCinemaId(cinemaId);
+            // 遍历转化为VO
+            for (HallFilmInfo hallFilmInfo : hallFilmInfos) {
+                FilmInfoVO filmInfoVO = new FilmInfoVO();
+                filmInfoVO.setImgAddress(hallFilmInfo.getImgAddress());
+                filmInfoVO.setFilmType(hallFilmInfo.getFilmLanguage());
+                filmInfoVO.setFilmName(hallFilmInfo.getFilmName());
+                filmInfoVO.setFilmLength(hallFilmInfo.getFilmLength());
+                filmInfoVO.setFilmId(hallFilmInfo.getFilmId() + "");
+                filmInfoVO.setFilmCats(hallFilmInfo.getFilmCats());
+                filmInfoVO.setActors(hallFilmInfo.getActors());
+                // 获取场次信息
+                List<FilmFieldVO> filmFieldVOS = new ArrayList<>();
+                List<Field> fields = fieldMapper.selectFieldByCinemaIdAndFilmId(cinemaId, hallFilmInfo.getFilmId());
+                // 场次信息转化为VO
+                for (Field field : fields) {
+                    FilmFieldVO filmFieldVO = new FilmFieldVO();
+                    filmFieldVO.setLanguage(hallFilmInfo.getFilmLanguage());
+                    filmFieldVO.setHallName(field.getHallName());
+                    filmFieldVO.setFieldId(field.getUuid() + "");
+                    filmFieldVO.setEndTime(field.getEndTime());
+                    filmFieldVO.setBeginTime(field.getBeginTime());
+                    filmFieldVO.setPrice(field.getPrice() + "");
+                    filmFieldVOS.add(filmFieldVO);
+                }
+                filmInfoVO.setFilmFields(filmFieldVOS);
+                response.add(filmInfoVO);
+            }
+        } catch (Exception e) {
+            logger.error("获取场次信息" + e.getMessage());
         }
         return response;
     }

@@ -2,7 +2,10 @@ package club.lightingsummer.movie.cinema.dal.dao;
 
 import club.lightingsummer.movie.cinema.api.po.HallFilmInfo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Mapper
 @Repository
@@ -18,4 +21,6 @@ public interface HallFilmInfoMapper {
     int updateByPrimaryKeySelective(HallFilmInfo record);
 
     int updateByPrimaryKey(HallFilmInfo record);
+
+    List<HallFilmInfo> selectHallFilmInfoByCinemaId(@Param("cinemaId") int cinemaId);
 }
