@@ -50,6 +50,12 @@ public class CinemaBizApplicationTests {
     }
 
     @Test
+    public void CinemaInfoApiFilmInfoTest() {
+        System.out.println(cinemaInfoApi.getFilmInfoByFieldId(5));
+        System.out.println(cinemaInfoApi.getFilmInfoByFieldId(7));
+    }
+
+    @Test
     public void CinemaInfoApiFieldTest() {
         System.out.println(cinemaInfoApi.getFilmInfoByCinemaId(1));
         System.out.println(cinemaInfoApi.getFilmInfoByCinemaId(3));

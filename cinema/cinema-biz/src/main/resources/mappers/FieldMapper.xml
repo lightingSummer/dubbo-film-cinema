@@ -35,6 +35,21 @@
       FROM tb_field a,tb_hall_dict b
       where a.UUID = #{fieldId} AND a.hall_id = b.UUID
   </select>
+    <select id="selectFilmInfoByFieldId" resultType="club.lightingsummer.movie.cinema.api.vo.FilmInfoVO">
+        SELECT
+          f.`film_id` AS filmId,
+          info.`film_name` AS filmName,
+          info.`film_length` AS filmLength,
+          info.`film_language` AS filmType,
+          info.`film_cats` AS filmCats,
+          info.`actors` AS actors,
+          info.`img_address` AS imgAddress
+        FROM
+          tb_field f,
+          tb_hall_film_info info
+        WHERE f.`film_id` = info.`film_id`
+          AND f.`UUID` = #{fieldId}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tb_field
     where UUID = #{uuid,jdbcType=INTEGER}

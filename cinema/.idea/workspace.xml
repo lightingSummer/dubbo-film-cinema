@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="357727e6-6a90-4fe0-b125-00ac6fec7ae7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cinema-api/src/main/java/club/lightingsummer/movie/cinema/api/vo/HallInfoVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-api/src/main/java/club/lightingsummer/movie/cinema/api/api/CinemaInfoApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-api/src/main/java/club/lightingsummer/movie/cinema/api/api/CinemaInfoApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-biz/src/main/java/club/lightingsummer/movie/cinema/biz/api/CinemaInfoApiImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-biz/src/main/java/club/lightingsummer/movie/cinema/biz/api/CinemaInfoApiImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-biz/src/main/resources/mappers/FieldMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-biz/src/main/resources/mappers/FieldMapper.xml" afterDir="false" />
@@ -26,8 +24,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cinema-api/src/main/java/club/lightingsummer/movie/cinema/api/api/CinemaInfoApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
+            <state relative-caret-position="487">
+              <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -38,8 +36,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cinema-biz/src/main/java/club/lightingsummer/movie/cinema/biz/api/CinemaInfoApiImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="270" column="71" selection-start-line="270" selection-start-column="71" selection-end-line="270" selection-end-column="71" />
+            <state relative-caret-position="408">
+              <caret line="288" column="63" lean-forward="true" selection-start-line="288" selection-start-column="63" selection-end-line="288" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -47,14 +45,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cinema-biz/src/test/java/club/lightingsummer/movie/cinema/biz/CinemaBizApplicationTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="42" column="61" selection-start-line="42" selection-start-column="61" selection-end-line="42" selection-end-column="61" />
+            <state relative-caret-position="337">
+              <caret line="53" column="58" selection-start-line="53" selection-start-column="58" selection-end-line="53" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1091#1092#0" expanded="true" />
                 <element signature="e#1154#1155#0" expanded="true" />
-                <element signature="e#1216#1217#0" expanded="true" />
-                <element signature="e#1279#1280#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -63,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cinema-dal/src/main/java/club/lightingsummer/movie/cinema/dal/dao/FieldMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="461">
+              <caret line="31" column="24" lean-forward="true" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,20 +71,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cinema-biz/src/main/resources/mappers/FieldMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="29" column="13" lean-forward="true" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cinema-api/src/main/java/club/lightingsummer/movie/cinema/api/vo/HallInfoVO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="323">
+              <caret line="46" column="12" lean-forward="true" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -143,8 +127,8 @@
         <option value="$PROJECT_DIR$/cinema-biz/src/main/resources/mappers/HallFilmInfoMapper.xml" />
         <option value="$PROJECT_DIR$/cinema-api/src/main/java/club/lightingsummer/movie/cinema/api/vo/FilmInfoVO.java" />
         <option value="$PROJECT_DIR$/cinema-api/src/main/java/club/lightingsummer/movie/cinema/api/vo/HallInfoVO.java" />
-        <option value="$PROJECT_DIR$/cinema-api/src/main/java/club/lightingsummer/movie/cinema/api/api/CinemaInfoApi.java" />
         <option value="$PROJECT_DIR$/cinema-dal/src/main/java/club/lightingsummer/movie/cinema/dal/dao/HallDictMapper.java" />
+        <option value="$PROJECT_DIR$/cinema-api/src/main/java/club/lightingsummer/movie/cinema/api/api/CinemaInfoApi.java" />
         <option value="$PROJECT_DIR$/cinema-dal/src/main/java/club/lightingsummer/movie/cinema/dal/dao/FieldMapper.java" />
         <option value="$PROJECT_DIR$/cinema-biz/src/main/resources/mappers/FieldMapper.xml" />
         <option value="$PROJECT_DIR$/cinema-biz/src/main/java/club/lightingsummer/movie/cinema/biz/api/CinemaInfoApiImpl.java" />
@@ -391,7 +375,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564404112226" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564404960124" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="Errors" />
@@ -416,7 +400,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CinemaBizApplicationTests.CinemaInfoApiFieldInfoTest">
+  <component name="RunManager" selected="JUnit.CinemaBizApplicationTests.CinemaInfoApiFilmInfoTest">
     <configuration name="CinemaBizApplicationTests.CinemaInfoApiAreaDictTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cinema-biz" />
       <extension name="coverage">
@@ -428,22 +412,6 @@
       <option name="PACKAGE_NAME" value="club.lightingsummer.movie.cinema.biz" />
       <option name="MAIN_CLASS_NAME" value="club.lightingsummer.movie.cinema.biz.CinemaBizApplicationTests" />
       <option name="METHOD_NAME" value="CinemaInfoApiAreaDictTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CinemaBizApplicationTests.CinemaInfoApiBrandDictTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="cinema-biz" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="club.lightingsummer.movie.cinema.biz.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="club.lightingsummer.movie.cinema.biz" />
-      <option name="MAIN_CLASS_NAME" value="club.lightingsummer.movie.cinema.biz.CinemaBizApplicationTests" />
-      <option name="METHOD_NAME" value="CinemaInfoApiBrandDictTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -481,6 +449,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CinemaBizApplicationTests.CinemaInfoApiFilmInfoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cinema-biz" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="club.lightingsummer.movie.cinema.biz.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="club.lightingsummer.movie.cinema.biz" />
+      <option name="MAIN_CLASS_NAME" value="club.lightingsummer.movie.cinema.biz.CinemaBizApplicationTests" />
+      <option name="METHOD_NAME" value="CinemaInfoApiFilmInfoTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CinemaBizApplicationTests.CinemaInfoApiHallDictTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cinema-biz" />
       <extension name="coverage">
@@ -506,11 +490,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CinemaBizApplicationTests.CinemaInfoApiFilmInfoTest" />
         <item itemvalue="JUnit.CinemaBizApplicationTests.CinemaInfoApiFieldInfoTest" />
         <item itemvalue="JUnit.CinemaBizApplicationTests.CinemaInfoApiFieldTest" />
         <item itemvalue="JUnit.CinemaBizApplicationTests.CinemaInfoApiHallDictTest" />
         <item itemvalue="JUnit.CinemaBizApplicationTests.CinemaInfoApiAreaDictTest" />
-        <item itemvalue="JUnit.CinemaBizApplicationTests.CinemaInfoApiBrandDictTest" />
       </list>
     </recent_temporary>
   </component>
@@ -529,14 +513,11 @@
       <workItem from="1564304261566" duration="647000" />
       <workItem from="1564365984066" duration="209000" />
       <workItem from="1564368458381" duration="13222000" />
-      <workItem from="1564397821692" duration="5730000" />
+      <workItem from="1564397821692" duration="6470000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CinemaBizApplicationTests_CinemaInfoApiTest - 2019.07.29 at 16h 29m 07s.xml">
-      <configuration name="CinemaBizApplicationTests.CinemaInfoApiTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="CinemaBizApplicationTests_CinemaInfoApiTest - 2019.07.29 at 16h 29m 48s.xml">
       <configuration name="CinemaBizApplicationTests.CinemaInfoApiTest" configurationId="JUnit" />
     </history-entry>
@@ -564,9 +545,12 @@
     <history-entry file="CinemaBizApplicationTests_CinemaInfoApiFieldTest - 2019.07.29 at 20h 14m 00s.xml">
       <configuration name="CinemaBizApplicationTests.CinemaInfoApiFieldTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="CinemaBizApplicationTests_CinemaInfoApiFieldInfoTest - 2019.07.29 at 20h 42m 21s.xml">
+      <configuration name="CinemaBizApplicationTests.CinemaInfoApiFieldInfoTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20927000" />
+    <option name="totallyTimeSpent" value="21667000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -581,7 +565,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.49835527" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.43092105" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -889,16 +873,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cinema-api/src/main/java/club/lightingsummer/movie/cinema/api/vo/HallInfoVO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cinema-dal/src/main/java/club/lightingsummer/movie/cinema/dal/dao/HallDictMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="464">
@@ -909,10 +883,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cinema-api/src/main/java/club/lightingsummer/movie/cinema/api/vo/HallInfoVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cinema-api/src/main/java/club/lightingsummer/movie/cinema/api/api/CinemaInfoApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
+        <state relative-caret-position="487">
+          <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cinema-dal/src/main/java/club/lightingsummer/movie/cinema/dal/dao/FieldMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="31" column="24" lean-forward="true" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -921,38 +915,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cinema-biz/src/main/resources/mappers/FieldMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="29" column="13" lean-forward="true" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cinema-dal/src/main/java/club/lightingsummer/movie/cinema/dal/dao/FieldMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="323">
+          <caret line="46" column="12" lean-forward="true" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cinema-biz/src/main/java/club/lightingsummer/movie/cinema/biz/api/CinemaInfoApiImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="270" column="71" selection-start-line="270" selection-start-column="71" selection-end-line="270" selection-end-column="71" />
+        <state relative-caret-position="408">
+          <caret line="288" column="63" lean-forward="true" selection-start-line="288" selection-start-column="63" selection-end-line="288" selection-end-column="63" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cinema-biz/src/test/java/club/lightingsummer/movie/cinema/biz/CinemaBizApplicationTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="42" column="61" selection-start-line="42" selection-start-column="61" selection-end-line="42" selection-end-column="61" />
+        <state relative-caret-position="337">
+          <caret line="53" column="58" selection-start-line="53" selection-start-column="58" selection-end-line="53" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1091#1092#0" expanded="true" />
             <element signature="e#1154#1155#0" expanded="true" />
-            <element signature="e#1216#1217#0" expanded="true" />
-            <element signature="e#1279#1280#0" expanded="true" />
           </folding>
         </state>
       </provider>

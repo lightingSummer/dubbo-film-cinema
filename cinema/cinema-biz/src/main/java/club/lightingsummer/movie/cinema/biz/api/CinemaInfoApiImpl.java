@@ -274,4 +274,20 @@ public class CinemaInfoApiImpl implements CinemaInfoApi {
         }
         return hallInfoVO;
     }
+
+    /**
+     * @author: lightingSummer
+     * @date: 2019/7/29 0029
+     * @description: 根据电影编号获取对应的电影信息, VO复用之前的
+     */
+    @Override
+    public FilmInfoVO getFilmInfoByFieldId(int fieldId) {
+        FilmInfoVO filmInfoVO = new FilmInfoVO();
+        try {
+            filmInfoVO = fieldMapper.selectFilmInfoByFieldId(fieldId);
+        } catch (Exception e) {
+            logger.error("根据电影编号获取对应的电影信息失败" + e.getMessage());
+        }
+        return filmInfoVO;
+    }
 }

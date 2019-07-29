@@ -1,6 +1,7 @@
 package club.lightingsummer.movie.cinema.dal.dao;
 
 import club.lightingsummer.movie.cinema.api.po.Field;
+import club.lightingsummer.movie.cinema.api.vo.FilmInfoVO;
 import club.lightingsummer.movie.cinema.api.vo.HallInfoVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -27,4 +28,6 @@ public interface FieldMapper {
                                                @Param("filmId") int filmId);
 
     HallInfoVO selectFieldInfoByFieldId(@Param("fieldId") int fieldId);
+
+    FilmInfoVO selectFilmInfoByFieldId(@Param("fieldId") int fieldId);
 }
