@@ -1,32 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="club.lightingsummer.movie.cinema.dal.dao.CinemaMapper">
-  <resultMap id="BaseResultMap" type="club.lightingsummer.movie.cinema.api.po.Cinema">
-    <id column="UUID" jdbcType="INTEGER" property="uuid" />
-    <result column="cinema_name" jdbcType="VARCHAR" property="cinemaName" />
-    <result column="cinema_phone" jdbcType="VARCHAR" property="cinemaPhone" />
-    <result column="brand_id" jdbcType="INTEGER" property="brandId" />
-    <result column="area_id" jdbcType="INTEGER" property="areaId" />
-    <result column="hall_ids" jdbcType="VARCHAR" property="hallIds" />
-    <result column="img_address" jdbcType="VARCHAR" property="imgAddress" />
-    <result column="cinema_address" jdbcType="VARCHAR" property="cinemaAddress" />
-    <result column="minimum_price" jdbcType="INTEGER" property="minimumPrice" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="club.lightingsummer.movie.cinema.api.po.Cinema">
+        <id column="UUID" jdbcType="INTEGER" property="uuid"/>
+        <result column="cinema_name" jdbcType="VARCHAR" property="cinemaName"/>
+        <result column="cinema_phone" jdbcType="VARCHAR" property="cinemaPhone"/>
+        <result column="brand_id" jdbcType="INTEGER" property="brandId"/>
+        <result column="area_id" jdbcType="INTEGER" property="areaId"/>
+        <result column="hall_ids" jdbcType="VARCHAR" property="hallIds"/>
+        <result column="img_address" jdbcType="VARCHAR" property="imgAddress"/>
+        <result column="cinema_address" jdbcType="VARCHAR" property="cinemaAddress"/>
+        <result column="minimum_price" jdbcType="INTEGER" property="minimumPrice"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     UUID, cinema_name, cinema_phone, brand_id, area_id, hall_ids, img_address, cinema_address, 
     minimum_price
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from tb_cinema
-    where UUID = #{uuid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_cinema
+        where UUID = #{uuid,jdbcType=INTEGER}
+    </select>
+    <select id="selectCinemaByCondition" resultType="club.lightingsummer.movie.cinema.api.po.Cinema">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_cinema
+        <where>
+            <if test="brandId != 99">
+                and brand_id = #{brandId}
+            </if>
+            <if test="hallType != null">
+                and hall_ids like #{hallType}
+            </if>
+            <if test="districtId != 99">
+                and area_id = #{districtId}
+            </if>
+        </where>
+    </select>
+    <select id="selectCountByCondition" resultType="java.lang.Integer">
+        select
+        count(1)
+        from tb_cinema
+        <where>
+            <if test="brandId != 99">
+                and brand_id = #{brandId}
+            </if>
+            <if test="hallType != null">
+                and hall_ids like #{hallType}
+            </if>
+            <if test="districtId != 99">
+                and area_id = #{districtId}
+            </if>
+        </where>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tb_cinema
     where UUID = #{uuid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="club.lightingsummer.movie.cinema.api.po.Cinema">
+    <insert id="insert" parameterType="club.lightingsummer.movie.cinema.api.po.Cinema">
     insert into tb_cinema (UUID, cinema_name, cinema_phone, 
       brand_id, area_id, hall_ids, 
       img_address, cinema_address, minimum_price
@@ -36,98 +68,98 @@
       #{imgAddress,jdbcType=VARCHAR}, #{cinemaAddress,jdbcType=VARCHAR}, #{minimumPrice,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="club.lightingsummer.movie.cinema.api.po.Cinema">
-    insert into tb_cinema
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="uuid != null">
-        UUID,
-      </if>
-      <if test="cinemaName != null">
-        cinema_name,
-      </if>
-      <if test="cinemaPhone != null">
-        cinema_phone,
-      </if>
-      <if test="brandId != null">
-        brand_id,
-      </if>
-      <if test="areaId != null">
-        area_id,
-      </if>
-      <if test="hallIds != null">
-        hall_ids,
-      </if>
-      <if test="imgAddress != null">
-        img_address,
-      </if>
-      <if test="cinemaAddress != null">
-        cinema_address,
-      </if>
-      <if test="minimumPrice != null">
-        minimum_price,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="uuid != null">
-        #{uuid,jdbcType=INTEGER},
-      </if>
-      <if test="cinemaName != null">
-        #{cinemaName,jdbcType=VARCHAR},
-      </if>
-      <if test="cinemaPhone != null">
-        #{cinemaPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="brandId != null">
-        #{brandId,jdbcType=INTEGER},
-      </if>
-      <if test="areaId != null">
-        #{areaId,jdbcType=INTEGER},
-      </if>
-      <if test="hallIds != null">
-        #{hallIds,jdbcType=VARCHAR},
-      </if>
-      <if test="imgAddress != null">
-        #{imgAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="cinemaAddress != null">
-        #{cinemaAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="minimumPrice != null">
-        #{minimumPrice,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="club.lightingsummer.movie.cinema.api.po.Cinema">
-    update tb_cinema
-    <set>
-      <if test="cinemaName != null">
-        cinema_name = #{cinemaName,jdbcType=VARCHAR},
-      </if>
-      <if test="cinemaPhone != null">
-        cinema_phone = #{cinemaPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="brandId != null">
-        brand_id = #{brandId,jdbcType=INTEGER},
-      </if>
-      <if test="areaId != null">
-        area_id = #{areaId,jdbcType=INTEGER},
-      </if>
-      <if test="hallIds != null">
-        hall_ids = #{hallIds,jdbcType=VARCHAR},
-      </if>
-      <if test="imgAddress != null">
-        img_address = #{imgAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="cinemaAddress != null">
-        cinema_address = #{cinemaAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="minimumPrice != null">
-        minimum_price = #{minimumPrice,jdbcType=INTEGER},
-      </if>
-    </set>
-    where UUID = #{uuid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="club.lightingsummer.movie.cinema.api.po.Cinema">
+    <insert id="insertSelective" parameterType="club.lightingsummer.movie.cinema.api.po.Cinema">
+        insert into tb_cinema
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uuid != null">
+                UUID,
+            </if>
+            <if test="cinemaName != null">
+                cinema_name,
+            </if>
+            <if test="cinemaPhone != null">
+                cinema_phone,
+            </if>
+            <if test="brandId != null">
+                brand_id,
+            </if>
+            <if test="areaId != null">
+                area_id,
+            </if>
+            <if test="hallIds != null">
+                hall_ids,
+            </if>
+            <if test="imgAddress != null">
+                img_address,
+            </if>
+            <if test="cinemaAddress != null">
+                cinema_address,
+            </if>
+            <if test="minimumPrice != null">
+                minimum_price,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="uuid != null">
+                #{uuid,jdbcType=INTEGER},
+            </if>
+            <if test="cinemaName != null">
+                #{cinemaName,jdbcType=VARCHAR},
+            </if>
+            <if test="cinemaPhone != null">
+                #{cinemaPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="brandId != null">
+                #{brandId,jdbcType=INTEGER},
+            </if>
+            <if test="areaId != null">
+                #{areaId,jdbcType=INTEGER},
+            </if>
+            <if test="hallIds != null">
+                #{hallIds,jdbcType=VARCHAR},
+            </if>
+            <if test="imgAddress != null">
+                #{imgAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="cinemaAddress != null">
+                #{cinemaAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="minimumPrice != null">
+                #{minimumPrice,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="club.lightingsummer.movie.cinema.api.po.Cinema">
+        update tb_cinema
+        <set>
+            <if test="cinemaName != null">
+                cinema_name = #{cinemaName,jdbcType=VARCHAR},
+            </if>
+            <if test="cinemaPhone != null">
+                cinema_phone = #{cinemaPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="brandId != null">
+                brand_id = #{brandId,jdbcType=INTEGER},
+            </if>
+            <if test="areaId != null">
+                area_id = #{areaId,jdbcType=INTEGER},
+            </if>
+            <if test="hallIds != null">
+                hall_ids = #{hallIds,jdbcType=VARCHAR},
+            </if>
+            <if test="imgAddress != null">
+                img_address = #{imgAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="cinemaAddress != null">
+                cinema_address = #{cinemaAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="minimumPrice != null">
+                minimum_price = #{minimumPrice,jdbcType=INTEGER},
+            </if>
+        </set>
+        where UUID = #{uuid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="club.lightingsummer.movie.cinema.api.po.Cinema">
     update tb_cinema
     set cinema_name = #{cinemaName,jdbcType=VARCHAR},
       cinema_phone = #{cinemaPhone,jdbcType=VARCHAR},
