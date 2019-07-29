@@ -1,9 +1,10 @@
 package club.lightingsummer.movie.cinema.biz.api;
 
-import club.lightingsummer.movie.cinema.api.api.CinemaInfoApi;
+import club.lightingsummer.movie.cinema.api.api.CinemaInfoAPI;
 import club.lightingsummer.movie.cinema.api.po.*;
 import club.lightingsummer.movie.cinema.api.vo.*;
 import club.lightingsummer.movie.cinema.dal.dao.*;
+import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.PageHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,8 +20,9 @@ import java.util.List;
  * @description： 影院查询API
  */
 @Component
-public class CinemaInfoApiImpl implements CinemaInfoApi {
-    private static final Logger logger = LoggerFactory.getLogger(CinemaInfoApiImpl.class);
+@Service(interfaceClass = CinemaInfoAPI.class, loadbalance = "roundrobin")
+public class CinemaInfoAPIImpl implements CinemaInfoAPI {
+    private static final Logger logger = LoggerFactory.getLogger(CinemaInfoAPIImpl.class);
 
     @Autowired
     private CinemaMapper cinemaMapper;

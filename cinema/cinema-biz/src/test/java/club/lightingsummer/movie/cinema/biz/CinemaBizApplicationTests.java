@@ -1,6 +1,6 @@
 package club.lightingsummer.movie.cinema.biz;
 
-import club.lightingsummer.movie.cinema.api.api.CinemaInfoApi;
+import club.lightingsummer.movie.cinema.api.api.CinemaInfoAPI;
 import club.lightingsummer.movie.cinema.api.vo.CinemaQueryVO;
 import club.lightingsummer.movie.cinema.dal.dao.BrandDictMapper;
 import club.lightingsummer.movie.cinema.dal.dao.CinemaMapper;
@@ -18,7 +18,7 @@ public class CinemaBizApplicationTests {
     private CinemaMapper cinemaMapper;
 
     @Autowired
-    private CinemaInfoApi cinemaInfoApi;
+    private CinemaInfoAPI cinemaInfoApi;
 
     @Autowired
     private BrandDictMapper brandDictMapper;

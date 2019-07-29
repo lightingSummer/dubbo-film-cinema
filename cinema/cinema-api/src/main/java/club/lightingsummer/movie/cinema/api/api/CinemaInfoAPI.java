@@ -9,7 +9,7 @@ import java.util.List;
  * @date       ：2019/7/29 0029
  * @description：
  */
-public interface CinemaInfoApi {
+public interface CinemaInfoAPI {
     // 根据CinemaQueryVO，查询影院列表
     Page<CinemaVO> getCinemas(CinemaQueryVO cinemaQueryVO);
     // 根据影院id，获取影院信息
