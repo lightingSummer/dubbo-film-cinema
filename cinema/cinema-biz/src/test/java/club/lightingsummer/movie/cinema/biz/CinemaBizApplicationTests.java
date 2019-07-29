@@ -2,6 +2,7 @@ package club.lightingsummer.movie.cinema.biz;
 
 import club.lightingsummer.movie.cinema.api.api.CinemaInfoApi;
 import club.lightingsummer.movie.cinema.api.vo.CinemaQueryVO;
+import club.lightingsummer.movie.cinema.dal.dao.BrandDictMapper;
 import club.lightingsummer.movie.cinema.dal.dao.CinemaMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,8 +20,22 @@ public class CinemaBizApplicationTests {
     @Autowired
     private CinemaInfoApi cinemaInfoApi;
 
+    @Autowired
+    private BrandDictMapper brandDictMapper;
+
     @Test
     public void contextLoads() {
+        System.out.println(cinemaInfoApi.getCinemaInfoById(2));
+    }
+
+    @Test
+    public void BrandMapperTest() {
+        System.out.println(brandDictMapper.selectByPrimaryKey(30));
+    }
+
+    @Test
+    public void CinemaInfoApiBrandDictTest() {
+        System.out.println(cinemaInfoApi.getBrands(20));
     }
 
     @Test
@@ -34,8 +49,8 @@ public class CinemaBizApplicationTests {
 
     @Test
     public void CinemaMapperTest() {
-        System.out.println(cinemaMapper.selectCinemaByCondition(99,null,99));
-        System.out.println(cinemaMapper.selectCinemaByCondition(1,"%#5%#",99));
-        System.out.println(cinemaMapper.selectCinemaByCondition(3,"%#9%#",7));
+        System.out.println(cinemaMapper.selectCinemaByCondition(99, null, 99));
+        System.out.println(cinemaMapper.selectCinemaByCondition(1, "%#5%#", 99));
+        System.out.println(cinemaMapper.selectCinemaByCondition(3, "%#9%#", 7));
     }
 }

@@ -4,6 +4,8 @@ import club.lightingsummer.movie.cinema.api.po.BrandDict;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface BrandDictMapper {
@@ -18,4 +20,6 @@ public interface BrandDictMapper {
     int updateByPrimaryKeySelective(BrandDict record);
 
     int updateByPrimaryKey(BrandDict record);
+
+    List<BrandDict> selectAllBrand();
 }

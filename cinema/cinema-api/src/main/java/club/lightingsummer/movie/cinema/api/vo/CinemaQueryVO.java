@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * @author     ：lightingSummer
  * @date       ：2019/7/29 0029
- * @description： 查询入参封装
+ * @description： 影院查询入参封装
  */
 @Data
 public class CinemaQueryVO implements Serializable {

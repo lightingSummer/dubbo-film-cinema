@@ -1,10 +1,10 @@
 package club.lightingsummer.movie.cinema.biz.api;
 
 import club.lightingsummer.movie.cinema.api.api.CinemaInfoApi;
+import club.lightingsummer.movie.cinema.api.po.BrandDict;
 import club.lightingsummer.movie.cinema.api.po.Cinema;
-import club.lightingsummer.movie.cinema.api.vo.CinemaQueryVO;
-import club.lightingsummer.movie.cinema.api.vo.CinemaVO;
-import club.lightingsummer.movie.cinema.api.vo.Page;
+import club.lightingsummer.movie.cinema.api.vo.*;
+import club.lightingsummer.movie.cinema.dal.dao.BrandDictMapper;
 import club.lightingsummer.movie.cinema.dal.dao.CinemaMapper;
 import club.lightingsummer.movie.cinema.dal.dao.HallFilmInfoMapper;
 import com.github.pagehelper.PageHelper;
@@ -29,6 +29,8 @@ public class CinemaInfoApiImpl implements CinemaInfoApi {
     private CinemaMapper cinemaMapper;
     @Autowired
     private HallFilmInfoMapper hallFilmInfoMapper;
+    @Autowired
+    private BrandDictMapper brandDictMapper;
 
     /**
      * @author: lightingSummer
@@ -66,5 +68,65 @@ public class CinemaInfoApiImpl implements CinemaInfoApi {
             logger.error("查询影院失败" + e.getMessage());
         }
         return page;
+    }
+
+    /**
+     * @author: lightingSummer
+     * @date: 2019/7/29 0029
+     * @description: 根据影院id获取影院信息
+     */
+    @Override
+    public CinemaInfoVO getCinemaInfoById(int cinemaId) {
+        CinemaInfoVO cinemaInfoVO = new CinemaInfoVO();
+        try {
+            Cinema cinema = cinemaMapper.selectByPrimaryKey(cinemaId);
+            // 复制到VO
+            cinemaInfoVO.setImgUrl(cinema.getImgAddress());
+            cinemaInfoVO.setCinemaPhone(cinema.getCinemaPhone());
+            cinemaInfoVO.setCinemaName(cinema.getCinemaName());
+            cinemaInfoVO.setCinemaId(cinema.getUuid() + "");
+            cinemaInfoVO.setCinemaAdress(cinema.getCinemaAddress());
+        } catch (Exception e) {
+            logger.error("根据影院id获取影院信息失败" + e.getMessage());
+        }
+        return cinemaInfoVO;
+    }
+
+    /**
+     * @author: lightingSummer
+     * @date: 2019/7/29 0029
+     * @description: 获取品牌列表
+     */
+    @Override
+    public List<BrandVO> getBrands(int brandId) {
+        List<BrandVO> response = new ArrayList<>();
+        try {
+            // 判断是否点亮全部按钮
+            boolean ifLightAllButton = false;
+            if (brandId == 99) {
+                ifLightAllButton = true;
+            } else {
+                BrandDict brandIfExits = brandDictMapper.selectByPrimaryKey(brandId);
+                if (brandIfExits == null) {
+                    ifLightAllButton = true;
+                }
+            }
+            List<BrandDict> brandDicts = brandDictMapper.selectAllBrand();
+            // 遍历转换为VO
+            for (BrandDict brandDict : brandDicts) {
+                BrandVO brandVO = new BrandVO();
+                brandVO.setBrandId(brandDict.getUuid() + "");
+                brandVO.setBrandName(brandDict.getShowName());
+                if (!ifLightAllButton && brandDict.getUuid() == brandId) {
+                    brandVO.setActive(true);
+                } else if (ifLightAllButton && brandDict.getUuid() == 99) {
+                    brandVO.setActive(true);
+                }
+                response.add(brandVO);
+            }
+        } catch (Exception e) {
+            logger.error("获取影院品牌失败" + e.getMessage());
+        }
+        return response;
     }
 }
