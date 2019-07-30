@@ -1,4 +1,4 @@
-# dubbo-film-cinema
+# dubbo-movie-cinema
 film-cinema模块
 影院模块<br>
 
