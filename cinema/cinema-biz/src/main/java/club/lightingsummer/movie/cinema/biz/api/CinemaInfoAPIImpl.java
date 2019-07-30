@@ -20,7 +20,7 @@ import java.util.List;
  * @description： 影院查询API
  */
 @Component
-@Service(interfaceClass = CinemaInfoAPI.class, loadbalance = "roundrobin")
+@Service(interfaceClass = CinemaInfoAPI.class, loadbalance = "roundrobin", executes = 10)
 public class CinemaInfoAPIImpl implements CinemaInfoAPI {
     private static final Logger logger = LoggerFactory.getLogger(CinemaInfoAPIImpl.class);
 

@@ -17,4 +17,5 @@ spring:
     protocol:
       name: dubbo
       port: 20883
+      accepts: 10
 
