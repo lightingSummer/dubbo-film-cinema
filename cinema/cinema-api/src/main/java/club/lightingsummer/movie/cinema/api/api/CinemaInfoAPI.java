@@ -26,4 +26,6 @@ public interface CinemaInfoAPI {
     HallInfoVO getFilmFieldInfo(int fieldId);
     // 根据电影编号获取对应的电影信息
     FilmInfoVO getFilmInfoByFieldId(int fieldId);
+    // 暴露给订单模块部分电影信息
+    OrderQueryVO getOrderNeedFilmInfoByField(int fieldId);
 }

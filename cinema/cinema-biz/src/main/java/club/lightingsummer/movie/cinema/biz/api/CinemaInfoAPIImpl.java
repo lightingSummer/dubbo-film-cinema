@@ -292,4 +292,25 @@ public class CinemaInfoAPIImpl implements CinemaInfoAPI {
         }
         return filmInfoVO;
     }
+
+    /**
+     * @author: lightingSummer
+     * @date: 2019/8/2 0002
+     * @description: 暴露给订单模块部分电影信息
+     */
+    @Override
+    public OrderQueryVO getOrderNeedFilmInfoByField(int fieldId) {
+        try {
+            OrderQueryVO orderQueryVO = new OrderQueryVO();
+            Field field = fieldMapper.selectByPrimaryKey(fieldId);
+            orderQueryVO.setFilmId(field.getUuid());
+            orderQueryVO.setCinemaId(field.getCinemaId());
+            orderQueryVO.setPrice(field.getPrice());
+            orderQueryVO.setFieldId(field.getUuid());
+            return orderQueryVO;
+        } catch (Exception e) {
+            logger.error("查询电影场次信息失败" + e.getMessage());
+            return null;
+        }
+    }
 }

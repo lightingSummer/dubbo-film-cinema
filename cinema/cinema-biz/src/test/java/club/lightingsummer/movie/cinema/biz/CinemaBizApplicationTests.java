@@ -29,6 +29,11 @@ public class CinemaBizApplicationTests {
     }
 
     @Test
+    public void contextLoads1() {
+        System.out.println(cinemaInfoApi.getOrderNeedFilmInfoByField(2));
+    }
+
+    @Test
     public void BrandMapperTest() {
         System.out.println(brandDictMapper.selectByPrimaryKey(30));
     }
