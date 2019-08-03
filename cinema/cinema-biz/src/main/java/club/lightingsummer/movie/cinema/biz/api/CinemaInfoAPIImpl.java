@@ -303,7 +303,7 @@ public class CinemaInfoAPIImpl implements CinemaInfoAPI {
         try {
             OrderQueryVO orderQueryVO = new OrderQueryVO();
             Field field = fieldMapper.selectByPrimaryKey(fieldId);
-            orderQueryVO.setFilmId(field.getUuid());
+            orderQueryVO.setFilmId(field.getFilmId());
             orderQueryVO.setCinemaId(field.getCinemaId());
             orderQueryVO.setPrice(field.getPrice());
             orderQueryVO.setFieldId(field.getUuid());
