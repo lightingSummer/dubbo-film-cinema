@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.lightingsummer.movie.cinema.mapper.FieldMapper">
+    <resultMap id="BaseResultMap" type="club.lightingsummer.movie.cinema.po.Field">
+        <id column="UUID" jdbcType="INTEGER" property="uuid"/>
+        <result column="cinema_id" jdbcType="INTEGER" property="cinemaId"/>
+        <result column="film_id" jdbcType="INTEGER" property="filmId"/>
+        <result column="begin_time" jdbcType="VARCHAR" property="beginTime"/>
+        <result column="end_time" jdbcType="VARCHAR" property="endTime"/>
+        <result column="hall_id" jdbcType="INTEGER" property="hallId"/>
+        <result column="hall_name" jdbcType="VARCHAR" property="hallName"/>
+        <result column="price" jdbcType="INTEGER" property="price"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    UUID, cinema_id, film_id, begin_time, end_time, hall_id, hall_name, price
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_field
+        where UUID = #{uuid,jdbcType=INTEGER}
+    </select>
+    <select id="selectFieldByCinemaIdAndFilmId" resultType="club.lightingsummer.movie.cinema.po.Field">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_field
+        where cinema_id = #{cinemaId} and film_id = #{filmId}
+    </select>
+    <select id="selectFieldInfoByFieldId" resultType="club.lightingsummer.movie.cinema.vo.HallInfoVO">
+      SELECT
+      a.UUID as hallFieldId,
+      a.hall_name as hallName,
+      a.price as price,
+      b.seat_address as seatFile
+      FROM tb_field a,tb_hall_dict b
+      where a.UUID = #{fieldId} AND a.hall_id = b.UUID
+  </select>
+    <select id="selectFilmInfoByFieldId" resultType="club.lightingsummer.movie.cinema.vo.FilmInfoVO">
+        SELECT
+          f.`film_id` AS filmId,
+          info.`film_name` AS filmName,
+          info.`film_length` AS filmLength,
+          info.`film_language` AS filmType,
+          info.`film_cats` AS filmCats,
+          info.`actors` AS actors,
+          info.`img_address` AS imgAddress
+        FROM
+          tb_field f,
+          tb_hall_film_info info
+        WHERE f.`film_id` = info.`film_id`
+          AND f.`UUID` = #{fieldId}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_field
+    where UUID = #{uuid,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="club.lightingsummer.movie.cinema.po.Field">
+    insert into tb_field (UUID, cinema_id, film_id, 
+      begin_time, end_time, hall_id, 
+      hall_name, price)
+    values (#{uuid,jdbcType=INTEGER}, #{cinemaId,jdbcType=INTEGER}, #{filmId,jdbcType=INTEGER}, 
+      #{beginTime,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}, #{hallId,jdbcType=INTEGER}, 
+      #{hallName,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER})
+  </insert>
+    <insert id="insertSelective" parameterType="club.lightingsummer.movie.cinema.po.Field">
+        insert into tb_field
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uuid != null">
+                UUID,
+            </if>
+            <if test="cinemaId != null">
+                cinema_id,
+            </if>
+            <if test="filmId != null">
+                film_id,
+            </if>
+            <if test="beginTime != null">
+                begin_time,
+            </if>
+            <if test="endTime != null">
+                end_time,
+            </if>
+            <if test="hallId != null">
+                hall_id,
+            </if>
+            <if test="hallName != null">
+                hall_name,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="uuid != null">
+                #{uuid,jdbcType=INTEGER},
+            </if>
+            <if test="cinemaId != null">
+                #{cinemaId,jdbcType=INTEGER},
+            </if>
+            <if test="filmId != null">
+                #{filmId,jdbcType=INTEGER},
+            </if>
+            <if test="beginTime != null">
+                #{beginTime,jdbcType=VARCHAR},
+            </if>
+            <if test="endTime != null">
+                #{endTime,jdbcType=VARCHAR},
+            </if>
+            <if test="hallId != null">
+                #{hallId,jdbcType=INTEGER},
+            </if>
+            <if test="hallName != null">
+                #{hallName,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                #{price,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="club.lightingsummer.movie.cinema.po.Field">
+        update tb_field
+        <set>
+            <if test="cinemaId != null">
+                cinema_id = #{cinemaId,jdbcType=INTEGER},
+            </if>
+            <if test="filmId != null">
+                film_id = #{filmId,jdbcType=INTEGER},
+            </if>
+            <if test="beginTime != null">
+                begin_time = #{beginTime,jdbcType=VARCHAR},
+            </if>
+            <if test="endTime != null">
+                end_time = #{endTime,jdbcType=VARCHAR},
+            </if>
+            <if test="hallId != null">
+                hall_id = #{hallId,jdbcType=INTEGER},
+            </if>
+            <if test="hallName != null">
+                hall_name = #{hallName,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=INTEGER},
+            </if>
+        </set>
+        where UUID = #{uuid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="club.lightingsummer.movie.cinema.po.Field">
+    update tb_field
+    set cinema_id = #{cinemaId,jdbcType=INTEGER},
+      film_id = #{filmId,jdbcType=INTEGER},
+      begin_time = #{beginTime,jdbcType=VARCHAR},
+      end_time = #{endTime,jdbcType=VARCHAR},
+      hall_id = #{hallId,jdbcType=INTEGER},
+      hall_name = #{hallName,jdbcType=VARCHAR},
+      price = #{price,jdbcType=INTEGER}
+    where UUID = #{uuid,jdbcType=INTEGER}
+  </update>
+</mapper>

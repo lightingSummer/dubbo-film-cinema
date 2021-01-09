@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.lightingsummer.movie.cinema.mapper.HallDictMapper">
+    <resultMap id="BaseResultMap" type="club.lightingsummer.movie.cinema.po.HallDict">
+        <id column="UUID" jdbcType="INTEGER" property="uuid"/>
+        <result column="show_name" jdbcType="VARCHAR" property="showName"/>
+        <result column="seat_address" jdbcType="VARCHAR" property="seatAddress"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    UUID, show_name, seat_address
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_hall_dict
+        where UUID = #{uuid,jdbcType=INTEGER}
+    </select>
+    <select id="selectAllHalls" resultType="club.lightingsummer.movie.cinema.po.HallDict">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_hall_dict
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_hall_dict
+    where UUID = #{uuid,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="club.lightingsummer.movie.cinema.po.HallDict">
+    insert into tb_hall_dict (UUID, show_name, seat_address
+      )
+    values (#{uuid,jdbcType=INTEGER}, #{showName,jdbcType=VARCHAR}, #{seatAddress,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="club.lightingsummer.movie.cinema.po.HallDict">
+        insert into tb_hall_dict
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uuid != null">
+                UUID,
+            </if>
+            <if test="showName != null">
+                show_name,
+            </if>
+            <if test="seatAddress != null">
+                seat_address,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="uuid != null">
+                #{uuid,jdbcType=INTEGER},
+            </if>
+            <if test="showName != null">
+                #{showName,jdbcType=VARCHAR},
+            </if>
+            <if test="seatAddress != null">
+                #{seatAddress,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="club.lightingsummer.movie.cinema.po.HallDict">
+        update tb_hall_dict
+        <set>
+            <if test="showName != null">
+                show_name = #{showName,jdbcType=VARCHAR},
+            </if>
+            <if test="seatAddress != null">
+                seat_address = #{seatAddress,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where UUID = #{uuid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="club.lightingsummer.movie.cinema.po.HallDict">
+    update tb_hall_dict
+    set show_name = #{showName,jdbcType=VARCHAR},
+      seat_address = #{seatAddress,jdbcType=VARCHAR}
+    where UUID = #{uuid,jdbcType=INTEGER}
+  </update>
+</mapper>
